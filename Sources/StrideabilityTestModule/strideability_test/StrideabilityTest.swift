@@ -40,16 +40,18 @@ public extension StrideabilityTest {
     
     ///
     func runTest_advanced_by () throws {
-        try value1
-            .advanced(by: distance)
-            .assertEqual(to: value2)
+        let result = value1.advanced(by: distance)
+        if result.isNotEqual(to: value2) {
+            throw "\(value1).advanced(by: \(distance)) returned \(result).".asErrorMessage()
+        }
     }
     
     ///
     func runTest_distance_to () throws {
-        try value1
-            .distance(to: value2)
-            .assertEqual(to: distance)
+        let result = value1.distance(to: value2)
+        if result.isNotEqual(to: distance) {
+            throw "\(value1).distance(to: \(value2)) returned \(result).".asErrorMessage()
+        }
     }
     
     ///
